@@ -149,7 +149,7 @@ export class NgxEditorComponent implements OnInit, ControlValueAccessor {
     try {
       this._commandExecutor.execute(commandName);
     } catch (error) {
-      this._messageService.sendMessage(error.message);
+      // this._messageService.sendMessage(error.message);
     }
   }
 

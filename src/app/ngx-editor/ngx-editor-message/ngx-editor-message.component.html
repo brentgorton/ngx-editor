@@ -1,3 +1,5 @@
-<div class="ngx-editor-message" *ngIf="ngxMessage" (dblclick)="clearMessage()">
-  {{ ngxMessage }}
+<div *ngIf="ngxMessage">
+  <div class="ngx-editor-message slds-m-bottom--large" (dblclick)="clearMessage()">
+    {{ ngxMessage }}
+  </div>
 </div>

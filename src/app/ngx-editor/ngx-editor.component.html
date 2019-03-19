@@ -1,19 +1,20 @@
-<div class="ngx-editor" id="ngxEditor" [style.width]="config['width']" [style.minWidth]="config['minWidth']" tabindex="0"
+<div class="ngx-editor slds-rich-text-editor slds-grid slds-grid_vertical slds-nowrap" id="ngxEditor" [style.width]="config['width']" [style.minWidth]="config['minWidth']" tabindex="0"
   (focus)="onEditorFocus()">
 
   <app-ngx-editor-toolbar [config]="config" (execute)="executeCommand($event)"></app-ngx-editor-toolbar>
 
   <!-- text area -->
   <div class="ngx-wrapper" #ngxWrapper>
-    <div class="ngx-editor-textarea" [attr.contenteditable]="config['editable']" (input)="onContentChange($event.target.innerHTML)"
-      [attr.translate]="config['translate']" [attr.spellcheck]="config['spellcheck']" [style.height]="config['height']"
+    <div class="slds-rich-text-editor__textarea ql-container">
+    <div class="ngx-editor-textarea slds-rich-text-area__content" [attr.contenteditable]="config['editable']" (input)="onContentChange($event.target.innerHTML)"
+      [attr.translate]="config['translate']" [attr.spellcheck]="config['spellcheck']" [style.maxHeight]="config['height']"
       [style.minHeight]="config['minHeight']" [style.resize]="Utils?.canResize(resizer)" (focus)="onTextAreaFocus()"
-      (blur)="onTextAreaBlur()" #ngxTextArea></div>
-
-    <span class="ngx-editor-placeholder">{{ placeholder || config['placeholder'] }}</span>
+      (blur)="onTextAreaBlur()" #ngxTextArea placeholder=""></div>
+    </div>
+    <!--<span class="ngx-editor-placeholder">{{ placeholder || config['placeholder'] }}</span>-->
   </div>
 
   <app-ngx-editor-message></app-ngx-editor-message>
-  <app-ngx-grippie *ngIf="resizer === 'stack'"></app-ngx-grippie>
+  <!--<app-ngx-grippie *ngIf="resizer === 'stack'"></app-ngx-grippie>-->
 
 </div>

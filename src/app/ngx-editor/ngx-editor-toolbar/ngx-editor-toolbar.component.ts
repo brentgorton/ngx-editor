@@ -14,6 +14,16 @@ import * as Utils from '../common/utils/ngx-editor.utils';
 })
 
 export class NgxEditorToolbarComponent implements OnInit {
+  private _fonts = [ { label: 'Salesforce Sans', name: ''},
+  { label : 'Arial', name : 'arial'},
+  { label : 'Courier', name : 'courier'},
+  { label : 'Verdana', name : 'verdana'},
+  { label : 'Tahoma', name: 'tahoma'},
+  { label : 'Garamond', name: 'garamond'},
+  { label : 'Times New Roman', name : 'serif'}
+  ];
+  private _sizes = [ 8, 9, 10, 11, 12, 14, 16, 18, 20, 22, 24, 26, 28, 36, 48, 72 ];
+
   /** holds values of the insert link form */
   urlForm: FormGroup;
   /** holds values of the insert image form */
@@ -29,9 +39,9 @@ export class NgxEditorToolbarComponent implements OnInit {
   /** which tab to active for color insetion */
   selectedColorTab = 'textColor';
   /** font family name */
-  fontName = '';
+  fontName = 'Salesforce Sans';
   /** font size */
-  fontSize = '';
+  fontSize = 12;
   /** hex color code */
   hexColor = '';
   /** show/hide image uploader */
@@ -69,6 +79,9 @@ export class NgxEditorToolbarComponent implements OnInit {
     return Utils.canEnableToolbarOptions(value, this.config['toolbar']);
   }
 
+  getState(command: string): boolean {
+    return this._commandExecutorService.getState(command);
+  }
   /**
    * triggers command from the toolbar to be executed and emits an event
    *
@@ -202,25 +215,27 @@ export class NgxEditorToolbarComponent implements OnInit {
   }
 
   /** set font size */
-  setFontSize(fontSize: string): void {
+  setFontSize(fontSize: number): void {
     try {
+      this.fontSize = fontSize;
       this._commandExecutorService.setFontSize(fontSize);
     } catch (error) {
       this._messageService.sendMessage(error.message);
     }
 
-    this.fontSizePopover.hide();
+    // this.fontSizePopover.hide();
   }
 
   /** set font Name/family */
-  setFontName(fontName: string): void {
+  setFontName(font: any): void {
     try {
-      this._commandExecutorService.setFontName(fontName);
+      this.fontName = font.label;
+      this._commandExecutorService.setFontName(font.name);
     } catch (error) {
       this._messageService.sendMessage(error.message);
     }
 
-    this.fontSizePopover.hide();
+    // this.fontSizePopover.hide();
   }
 
   ngOnInit() {

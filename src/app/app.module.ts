@@ -5,10 +5,12 @@ import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { NgxEditorModule } from './ngx-editor/ngx-editor.module';
+import { SafeHtml } from './ngx-editor/ngx-editor-message/ngx-editor-message.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    SafeHtml
   ],
   imports: [
     BrowserModule,

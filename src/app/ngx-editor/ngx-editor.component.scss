@@ -14,7 +14,7 @@
     .ngx-editor-textarea {
       min-height: 5rem;
       padding: 0.5rem 0.8rem 1rem 0.8rem;
-      border: 1px solid #ddd;
+      /*border: 1px solid #ddd;*/
       background-color: transparent;
       overflow-x: hidden;
       overflow-y: auto;
@@ -36,7 +36,6 @@
     ::ng-deep p {
       margin-bottom: 0;
     }
-
     .ngx-editor-placeholder {
       display: none;
       position: absolute;
@@ -46,11 +45,13 @@
       color: #6c757d;
       opacity: 1;
     }
-
+    
     &.show-placeholder {
       .ngx-editor-placeholder {
         display: block;
       }
     }
+
   }
 }
+
